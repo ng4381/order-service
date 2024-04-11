@@ -2,6 +2,7 @@ package com.nik.orderservice.controller;
 
 import com.nik.orderservice.command.CreateOrderCommand;
 import com.nik.orderservice.command.SelectProductCommand;
+import com.nik.orderservice.dto.OrderViewDto;
 import com.nik.orderservice.entity.OrderView;
 import com.nik.orderservice.query.FindOrderQuery;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class OrderController {
         commandGateway.send(selectProductCommand);
     }
     @GetMapping("/order/{id}")
-    public CompletableFuture<OrderView> getOrderViewById(@PathVariable String id) {
-        return queryGateway.query(new FindOrderQuery(id), ResponseTypes.instanceOf(OrderView.class));
+    public CompletableFuture<OrderViewDto> getOrderViewById(@PathVariable String id) {
+        return queryGateway.query(new FindOrderQuery(id), ResponseTypes.instanceOf(OrderViewDto.class));
     }
 }
