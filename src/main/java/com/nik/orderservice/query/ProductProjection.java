@@ -2,6 +2,7 @@ package com.nik.orderservice.query;
 
 
 import com.nik.commonservice.event.ProductCreatedEvent;
+import com.nik.orderservice.entity.ProductView;
 import com.nik.orderservice.repository.ProductViewRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,10 @@ public class ProductProjection {
         System.out.println("++++++++++++++++++++++++");
         log.info("ProductCreatedEvent ... productId = " + productCreatedEvent.getProductId() + " productName = " + productCreatedEvent.getName());
         log.info("Saving to local base ... productId = " + productCreatedEvent.getProductId());
-
+        productViewRepository.save(ProductView.builder()
+                .productId(productCreatedEvent.getProductId())
+                .name(productCreatedEvent.getName())
+                .build());
         System.out.println("++++++++++++++++++++++++");
     }
 }

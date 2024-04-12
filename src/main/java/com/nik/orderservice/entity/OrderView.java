@@ -21,6 +21,6 @@ public class OrderView {
     //@UuidGenerator
     private String orderId;
     private LocalDateTime creationDate;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Map<String, Integer> products;
 }
