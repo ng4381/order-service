@@ -55,16 +55,18 @@ public class Order {
     public void on(OrderCreatedEvent orderCreatedEvent) {
         orderId = orderCreatedEvent.getOrderId();
         selectedProducts = new HashMap<>();
-        log.info("EventSourcingHandler OrderCreatedEvent ... id = " + orderId);
+        log.info("[NIK]EventSourcingHandler OrderCreatedEvent ... id = " + orderId);
     }
 
     @EventSourcingHandler
     public void on(ProductSelectedEvent productSelectedEvent) {
         selectedProducts.merge(productSelectedEvent.getProductId(), productSelectedEvent.getQty(), Integer::sum);
+        log.info("[NIK]EventSourcingHandler productSelectedEvent ... id = " + orderId);
     }
 
     @EventSourcingHandler
     public void on(ProductDeselectedEvent productDeselectedEvent) {
         selectedProducts.merge(productDeselectedEvent.getProductId(), productDeselectedEvent.getQty(), (i1, i2) -> i1 - i2);
+        log.info("[NIK]EventSourcingHandler productDeselectedEvent ... id = " + orderId);
     }
 }

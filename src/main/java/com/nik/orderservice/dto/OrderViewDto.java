@@ -13,5 +13,5 @@ import java.util.Map;
 public class OrderViewDto {
     private String orderId;
     private LocalDateTime creationDate;
-    private Map<String, Integer> products;
+    private String products;
 }

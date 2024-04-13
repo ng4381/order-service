@@ -5,22 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class OrderView {
+@Table(name = "orders")
+public class Order {
     @Id
     //@UuidGenerator
     private String orderId;
     private LocalDateTime creationDate;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Map<String, Integer> products;
+    //    @ElementCollection(fetch = FetchType.EAGER)
+//    private Map<String, Integer> products;
+    //@OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<OrderItem> orderItems;
 }

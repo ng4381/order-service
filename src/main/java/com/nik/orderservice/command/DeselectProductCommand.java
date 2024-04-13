@@ -7,7 +7,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeselectProductCommand {
+public class DeselectProductCommand{
     @TargetAggregateIdentifier
     private String orderId;
     private String productId;
