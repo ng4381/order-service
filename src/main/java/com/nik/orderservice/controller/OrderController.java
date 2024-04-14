@@ -1,5 +1,6 @@
 package com.nik.orderservice.controller;
 
+import com.nik.orderservice.command.ConfirmOrderCommand;
 import com.nik.orderservice.command.CreateOrderCommand;
 import com.nik.orderservice.command.SelectProductCommand;
 import com.nik.orderservice.dto.OrderViewDto;
@@ -26,6 +27,12 @@ public class OrderController {
     public ResponseEntity<String> createOrder() {
         commandGateway.send(new CreateOrderCommand());
         return ResponseEntity.ok("Order created");
+    }
+
+    @PostMapping("/order/confirm/{id}")
+    public ResponseEntity<String> confirmOrder(@PathVariable String id) {
+        commandGateway.send(new ConfirmOrderCommand(id));
+        return ResponseEntity.ok("Order confirmed id = %s".formatted(id));
     }
 
     @PostMapping("/order/product")

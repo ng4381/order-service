@@ -1,10 +1,10 @@
 package com.nik.orderservice.command;
 
-import com.nik.orderservice.exception.ProductDeselectionException;
-import com.nik.orderservice.event.OrderConfirmedEvent;
+import com.nik.commonservice.event.OrderConfirmedEvent;
 import com.nik.orderservice.event.OrderCreatedEvent;
 import com.nik.orderservice.event.ProductDeselectedEvent;
 import com.nik.orderservice.event.ProductSelectedEvent;
+import com.nik.orderservice.exception.ProductDeselectionException;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
